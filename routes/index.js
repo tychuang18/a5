@@ -6,11 +6,11 @@
 
 exports.view = function(req, res){
 	//console.log(data);
-  data.['viewAlt'] = false;
-  	res.render('index',data);
+//  data.['viewAlt'] = false;
+  	res.render('index');
 };
 
-exports.viewAlt = function(req,res){
+/* exports.viewAlt = function(req,res){
   data['viewAlt'] = true;
   res.render('index', data);
-};
+};*/
