@@ -1,71 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>My Fridge</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <meta charset utf="8">
-        <!--font-awesome-css-->
-           <link rel="stylesheet" href="css/font-awesome.min.css">
-    <!--bootstrap-->
-      <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <!--custom css-->
-      <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        <!--component-css-->
-
-    <!--default-js-->
-      <script src="js/jquery-2.1.4.min.js"></script>
-    <!--bootstrap-js-->
-      <script src="js/bootstrap.min.js"></script>
-    <!--script-->
-    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/basic.css" rel="stylesheet">
     {{> facebook}}
     <script src="/js/facebook.js"></script>
+</head>
 
 
-   <!-- <script>
-  	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<body>
 
-  	ga('create', 'UA-159236519-1', 'auto');
-  	ga('require', 'GTM-WP2FCNV')
-  	ga('send', 'pageview');
-  </script> -->
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">My Fridge</h2>
+  <button onclick="goBack()">Go Back</button>
+  <p class="facebookLogin">Please login through Facebook<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button></p>
+  <input type="text" id="myInput" placeholder="Ingredients, Expiration days...">
+  <span onclick="newElement()" class="addBtn">Add</span>
+  <input type="text" id= "searchInput" onkeyup="search()"
+ placeholder="Search for foods.." title="Type in a name">
 
-    </head>
-    <body>
-    <div class="fit_main">
-      <h1 class="fit_tittle"><a href="index.html">My Fridge</a></h1>
+</div>
 
-      <button onclick="goBack()">Go Back</button>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="add.html">Add Person</a>
+  <a href="settings.html">Settings</a>
+</div>
+
+<!-- Use any element to open the sidenav -->
+<span onclick="openNav()">Open Nav</span>
+
+
+<button onclick="goBack()">Go Back</button>
 
 
 
-      <div class="main_frame second">
-        <div class="main_frame">
-          <iframe class="frame-border" src="single.html" frameborder="0"></iframe>
-          <p class="facebookLogin">Please login through Facebook<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button></p>
 
-        </div>
-      </div>
-    </div>
+<!--Top nav
+<div class="topnav">
+  <a class="active" href="#home">All</a>
+  <a href="#news">Veggie</a>
+  <a href="#contact">Meat</a>
+  <a href="#about">Others</a>
+</div>-->
 
-    <script>
+
+
+
+<ul id="myUL">
+  <li><a href="#">Egg, 3 days</a></li>
+  <li><a href="#">Milk, 5 days </a></li>
+
+  <li><a href="#">Apple, 2 days</a></li>
+  <li><a href="#">Pork, 7 days</a></li>
+
+  <li><a href="#">Guacamoli, 2 days</a></li>
+  <li><a href="#">Orange, 5 days</a></li>
+  <li><a href="#">Tofu, 6 days</a></li>
+</ul>
+
+<button onclick="window.location.href = 'recipes.html';" class="button" style="float: right;">Find Recipes</button>
+
+
+<script>
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+// Scroll function
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+}
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+function goBack() {
+  window.history.back();
+}
+
+/* search the word */
+function search() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
     function goBack() {
       window.history.back();
     }
-    </script>
-
-
-    <script src="js/jquery.nicescroll.js"></script>
-    <script src="js/scripts.js"></script>
-    </body>
-
-  
-
-
+</script>
+<script src="js/basic.js"></script>
+</body>
 </html>
