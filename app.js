@@ -34,7 +34,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', index.view);
+//app.get('/', index.view);
 //app.get('/viewAlt', index.viewAlt);
 
 // Example route
@@ -43,3 +43,8 @@ app.get('/', index.view);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+//register the control (orginal condition)
+app.get('/', index.view);
+//register the experimental condition
+app.get('/viewAlt', index.viewAlt);
