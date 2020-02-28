@@ -11,30 +11,61 @@
 <body>
 
 <div id="myDIV" class="header">
-  <h2 style="margin:5px">My Fridge</h2>
+  <h2 style="margin:30px">My Fridge</h2>
   <button onclick="goBack()">Go Back</button>
   <p class="facebookLogin">Please login through Facebook<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button></p>
+
   <input type="text" id="myInput" placeholder="Ingredients, Expiration days...">
   <span onclick="newElement()" class="addBtn">Add</span>
   <input type="text" id= "searchInput" onkeyup="search()"
  placeholder="Search for foods.." title="Type in a name">
+ <button onclick="window.location.href = 'recipes.html';" class="button" style="float: right;">Find Recipes</button>
 
 </div>
 
-<div id="mySidenav" class="sidenav">
+ <!--<div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="add.html">Add Person</a>
   <a href="settings.html">Settings</a>
+  <a href="help.html">Help</a>
 </div>
-
-<!-- Use any element to open the sidenav -->
 <span onclick="openNav()">Open Nav</span>
-
-
-<button onclick="goBack()">Go Back</button>
+< Use any element to open the sidenav -->
 
 
 
+<style>
+body {margin:0;}
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+</style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="add.html">Add Person</a>
+    <a href="settings.html">Notification</a>
+  </div>
 
 <!--Top nav
 <div class="topnav">
@@ -59,7 +90,6 @@
   <li><a href="#">Tofu, 6 days</a></li>
 </ul>
 
-<button onclick="window.location.href = 'recipes.html';" class="button" style="float: right;">Find Recipes</button>
 
 
 <script>
