@@ -14,15 +14,21 @@
 <div id="myDIV" class="header">
   <!-- Use any element to open the sidenav -->
 
-  <h1 class="fit_tittle">My Fridge</a></h1>
+  <h1 class="fit_tittle"><font color = "black">My Fridge</a></h1>
 
   <button onclick="goBack()">Go Back</button>
 
   <p class="facebookLogin"><fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button></p>
+
+  <h2>
   <input type="text" id="myInput" placeholder="Ingredients, Expiration days...">
+</h2>
+
   <span onclick="newElement()" class="addBtn">Add</span>
-  <input type="text" id= "searchInput" onkeyup="search()"
+
+  <input type="text" class ="search" id= "searchInput" onkeyup="search()"
  placeholder="Search for foods.." title="Type in a name">
+
  <button onclick="window.location.href = 'recipes.html';" class="button" style="float: right;">Find Recipes</button>
 
 </div>
@@ -41,19 +47,36 @@
 
 <style>
 
-body {margin:0;}
+h1{
+  background-color: #D1FFFB;
+  text
+}
+
+body {margin:0;
+background-color: #D1FFFB;}
+
+.search{
+  position: static;
+  margin-top: 20px;
+}
 
 .button{
-  padding: 10px;
+  padding: 20px;
+  position: relative;
+  left: 5px;
   text-align: center;
-  width: 150px;
-  margin: 4px 2px;
+  width: 250px;
+  margin-top: 15px;
   display: inline-block;
+  font-size:15px;
+  background-color: #DBEDFD;
+
+
 }
 
 .navbar {
   overflow: hidden;
-  background-color: #333;
+  background-color: #DBEDFD;
   position: fixed;
   top: 0;
   width: 100%;
@@ -62,7 +85,7 @@ body {margin:0;}
 .navbar a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #0D2944;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -75,6 +98,7 @@ body {margin:0;}
 }
 </style>
 </head>
+
 <body>
 
   <div class="navbar">
@@ -130,12 +154,12 @@ for (i = 0; i < close.length; i++) {
 }
 
 // Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
+/*var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
   }
-}, false);
+}, false);*/
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
