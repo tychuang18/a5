@@ -46,7 +46,5 @@ http.createServer(app).listen(app.get('port'), function(){
 app.get('/', index.view);
 
 //register the experimental condition
-app.get('/path/to/page_A', index.view);
-app.get('/path/to/page_B', index.viewAlt);
-
-
+app.get('/', index.view);
+app.get('/viewAlt', index.viewAlt);
