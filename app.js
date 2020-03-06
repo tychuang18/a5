@@ -34,6 +34,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+console.log("Like clicked");
+function LikeClick(e){
+  console.log("Like clicked");
+  e.preventDefault();
+}
 
 // Example route
 // app.get('/users', user.list);
