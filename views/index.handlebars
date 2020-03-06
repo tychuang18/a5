@@ -13,10 +13,10 @@
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
     ga('create', 'UA-159236519-1', 'auto');
     ga('require', 'GTM-WP2FCNV')
     ga('send', 'pageview');
+    ga("send", "event", click);
 </script>
 
 </head>
@@ -59,20 +59,16 @@
 
 
 <style>
-
 h1{
   background-color: #D1FFFB;
   text
 }
-
 body {margin:0;
 background-color: #D1FFFB;}
-
 .search{
   position: static;
   margin-top: 20px;
 }
-
 .button{
   padding: 20px;
   position: relative;
@@ -83,10 +79,7 @@ background-color: #D1FFFB;}
   display: inline-block;
   font-size:15px;
   background-color: #DBEDFD;
-
-
 }
-
 .navbar {
   overflow: hidden;
   background-color: #DBEDFD;
@@ -94,7 +87,6 @@ background-color: #D1FFFB;}
   top: 0;
   width: 100%;
 }
-
 .navbar a {
   float: left;
   display: block;
@@ -104,7 +96,6 @@ background-color: #D1FFFB;}
   text-decoration: none;
   font-size: 17px;
 }
-
 .navbar a:hover {
   background: #ddd;
   color: black;
@@ -114,18 +105,22 @@ background-color: #D1FFFB;}
 
 <body>
 
+<button>
+{{#if viewAlt}}
+<div id="mySidenav" class="sidenav">
+ <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+ <a href="">Home</a>
+ <a href="add.html">Add Person</a>
+ <a href="settings.html">Notification</a>
+</div>
+<span onclick="openNav()">Open Nav</span>
+{{#else}}
   <div class="navbar">
     <a href="add.html">Add Person</a>
     <a href="settings.html">Notification</a>
   </div>
+</button>
 
-<!--Top nav
-<div class="topnav">
-  <a class="active" href="#home">All</a>
-  <a href="#news">Veggie</a>
-  <a href="#contact">Meat</a>
-  <a href="#about">Others</a>
-</div>-->
 
 
 
@@ -155,7 +150,6 @@ for (i = 0; i < myNodelist.length; i++) {
   span.appendChild(txt);
   myNodelist[i].appendChild(span);
 }
-
 // Click on a close button to hide the current list item
 var close = document.getElementsByClassName("close");
 var i;
@@ -165,7 +159,6 @@ for (i = 0; i < close.length; i++) {
     div.style.display = "none";
   }
 }
-
 // Add a "checked" symbol when clicking on a list item
 /*var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
@@ -173,7 +166,6 @@ list.addEventListener('click', function(ev) {
     ev.target.classList.toggle('checked');
   }
 }, false);*/
-
 // Create a new list item when clicking on the "Add" button
 function newElement() {
   var li = document.createElement("li");
@@ -186,13 +178,11 @@ function newElement() {
     document.getElementById("myUL").appendChild(li);
   }
   document.getElementById("myInput").value = "";
-
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
-
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
       var div = this.parentElement;
@@ -200,31 +190,25 @@ function newElement() {
     }
   }
 }
-
 // Scroll function
 window.onscroll = function() {myFunction()};
-
 function myFunction() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   var scrolled = (winScroll / height) * 100;
   document.getElementById("myBar").style.width = scrolled + "%";
 }
-
 /* Set the width of the side navigation to 250px */
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
 }
-
 /* Set the width of the side navigation to 0 */
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
-
 function goBack() {
   window.history.back();
 }
-
 /* search the word */
 function search() {
     var input, filter, ul, li, a, i, txtValue;
@@ -242,7 +226,6 @@ function search() {
         }
     }
 }
-
     function goBack() {
       window.history.back();
     }
