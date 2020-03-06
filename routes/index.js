@@ -5,12 +5,12 @@
 var data = require('../data.json');
 
 exports.view = function(req, res){
-	//console.log(data);
-    data['viewAlt'] = false;
-  	res.render('index', data);
+       res.render('index', data);
+       data['viewAlt'] = false;
+
 };
 
 exports.viewAlt = function(req, res){
-  data['viewAlt'] = true;
-  res.render('index', data);
+       res.render('index', data);
+       data['viewAlt'] = true;
 };

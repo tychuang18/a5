@@ -34,8 +34,6 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-//app.get('/', index.view);
-//app.get('/viewAlt', index.viewAlt);
 
 // Example route
 // app.get('/users', user.list);
@@ -46,5 +44,9 @@ http.createServer(app).listen(app.get('port'), function(){
 
 //register the control (orginal condition)
 app.get('/', index.view);
+
 //register the experimental condition
-app.get('/viewAlt', index.viewAlt);
+app.get('/path/to/page_A', index.view);
+app.get('/path/to/page_B', index.viewAlt);
+
+
